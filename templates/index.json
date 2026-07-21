@@ -39,6 +39,52 @@
         "show_text_below": false
       }
     },
+    "premium_fashion_hero": {
+      "type": "premium-fashion-hero",
+      "settings": {
+        "eyebrow": "Curated luxury",
+        "heading": "Modern essentials, sculpted with intention",
+        "subheading": "Discover refined staples that move effortlessly from day to evening.",
+        "description": "<p>Elevated textures, precise tailoring, and timeless silhouettes created for a premium wardrobe.</p>",
+        "primary_button_label": "Shop now",
+        "primary_button_link": "shopify://collections/all",
+        "secondary_button_label": "View lookbook",
+        "secondary_button_link": "#",
+        "background_color": "#0c0a09",
+        "accent_color": "#b68c4b",
+        "content_alignment": "left"
+      },
+      "blocks": {
+        "feature_1": {
+          "type": "feature",
+          "settings": {
+            "icon": "✦",
+            "title": "Signature finish",
+            "text": "Refined detailing that feels exceptional in every wear."
+          }
+        },
+        "feature_2": {
+          "type": "feature",
+          "settings": {
+            "icon": "◌",
+            "title": "Crafted comfort",
+            "text": "Designed for movement, polish, and all-day ease."
+          }
+        },
+        "stat_1": {
+          "type": "stat",
+          "settings": {
+            "value": "01",
+            "label": "Season launch"
+          }
+        }
+      },
+      "block_order": [
+        "feature_1",
+        "feature_2",
+        "stat_1"
+      ]
+    },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
@@ -70,6 +116,7 @@
   },
   "order": [
     "image_banner",
+    "premium_fashion_hero",
     "featured_collection"
   ]
 }
