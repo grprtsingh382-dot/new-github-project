@@ -25,9 +25,9 @@
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 1440px;
+  max-width: var(--page-width, 120rem);
   margin: 0 auto;
-  padding: 0 clamp(1.25rem, 3vw, 2.5rem);
+  padding: 0 1.5rem;
 }
 
 .premium-fashion-hero__grid {
@@ -60,7 +60,7 @@
 
 .premium-fashion-hero__heading {
   margin: 0 0 1rem;
-  font-size: clamp(2.2rem, 5vw, 4.3rem);
+  font-size: clamp(2.2rem, 3.2vw, 2.625rem);
   line-height: 0.95;
   letter-spacing: -0.03em;
   font-weight: 600;
@@ -68,14 +68,14 @@
 
 .premium-fashion-hero__subheading {
   margin: 0 0 1rem;
-  font-size: clamp(1rem, 2.3vw, 1.16rem);
+  font-size: clamp(1rem, 1.3vw, 1rem);
   line-height: 1.7;
   color: rgba(0, 0, 0, 0.82);
 }
 
 .premium-fashion-hero__description {
   margin: 0 0 1.5rem;
-  font-size: 0.96rem;
+  font-size: 1rem;
   line-height: 1.8;
   color: rgba(0, 0, 0, 0.74);
 }
@@ -93,6 +93,7 @@
   justify-content: center;
   min-height: 3.1rem;
   padding: 0 1.25rem;
+  font-size: 1.125rem;
   border-radius: 999px;
   text-decoration: none;
   transition: transform 0.35s ease, box-shadow 0.35s ease, background-color 0.35s ease, border-color 0.35s ease;
@@ -224,7 +225,7 @@
   display: grid;
   gap: 1rem;
   margin-top: 2rem;
-  max-width: 1440px;
+  max-width: var(--page-width, 120rem);
   margin-left: auto;
   margin-right: auto;
 }
