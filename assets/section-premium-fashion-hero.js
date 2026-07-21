@@ -6,8 +6,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const media = section.querySelector('.premium-fashion-hero__media');
     const mediaFrame = section.querySelector('.premium-fashion-hero__media-frame');
     const buttons = section.querySelectorAll('.js-magnetic');
+    const enableAnimations = section.getAttribute('data-animation-enabled') !== 'false';
 
-    if ('IntersectionObserver' in window) {
+    if (enableAnimations && 'IntersectionObserver' in window) {
       const revealObserver = new IntersectionObserver(function (entries, observer) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
@@ -30,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
 
-    if (media && mediaFrame) {
+    if (enableAnimations && media && mediaFrame) {
       const applyParallax = function () {
         const rect = media.getBoundingClientRect();
         const viewportHeight = window.innerHeight;
@@ -42,6 +43,21 @@ document.addEventListener('DOMContentLoaded', function () {
       window.addEventListener('scroll', applyParallax, { passive: true });
       window.addEventListener('resize', applyParallax);
       applyParallax();
+    }
+
+    if (media) {
+      media.addEventListener('mousemove', function (event) {
+        const rect = media.getBoundingClientRect();
+        const offsetX = ((event.clientX - rect.left) / rect.width - 0.5) * 8;
+        const offsetY = ((event.clientY - rect.top) / rect.height - 0.5) * 8;
+        media.style.transform = 'translate3d(' + offsetX + 'px, ' + offsetY + 'px, 0)';
+      });
+
+      media.addEventListener('mouseleave', function () {
+        media.style.transform = '';
+      });
+
+      media.classList.add('is-visible');
     }
 
     buttons.forEach(function (button) {
@@ -56,9 +72,5 @@ document.addEventListener('DOMContentLoaded', function () {
         button.style.transform = '';
       });
     });
-
-    if (media) {
-      media.classList.add('is-visible');
-    }
   });
 });

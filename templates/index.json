@@ -43,19 +43,25 @@
       ],
       "settings": {
         "eyebrow": "Curated luxury",
-        "heading": "Modern essentials, sculpted with intention",
+        "heading": "The new standard of modern luxury",
         "subheading": "Discover refined staples that move effortlessly from day to evening.",
         "description": "<p>Elevated textures, precise tailoring, and timeless silhouettes created for a premium wardrobe.</p>",
-        "hero_image": "shopify://shop_images/woman-portrait-on-pink-brick.jpg",
-        "small_image": "shopify://shop_images/model-leaning-against-a-wall-of-lights-atop-red-shag-carpet.jpg",
-        "highlight_text": "Limited release",
+        "desktop_image": "shopify://shop_images/woman-portrait-on-pink-brick.jpg",
+        "mobile_image": "shopify://shop_images/model-leaning-against-a-wall-of-lights-atop-red-shag-carpet.jpg",
+        "highlight_text": "New arrival",
         "primary_button_label": "Shop now",
         "primary_button_link": "shopify://collections/all",
         "secondary_button_label": "View lookbook",
         "secondary_button_link": "#",
-        "background_color": "#FFFFFF",
+        "background_color": "#f7efe7",
         "accent_color": "#b68c4b",
-        "content_alignment": "left"
+        "overlay_color": "#000000",
+        "overlay_opacity": 0.18,
+        "content_alignment": "left",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "hero_height": 720,
+        "enable_animations": true
       }
     },
     "featured_collection": {

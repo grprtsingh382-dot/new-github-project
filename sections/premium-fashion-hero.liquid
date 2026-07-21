@@ -4,7 +4,8 @@
   class="premium-fashion-hero"
   data-section-id="{{ section.id }}"
   data-section-type="premium-fashion-hero"
-  style="--hero-surface: {{ section.settings.background_color | default: '#0b0a09' }}; --hero-accent: {{ section.settings.accent_color | default: '#b68c4b' }};"
+  data-animation-enabled="{{ section.settings.enable_animations }}"
+  style="--hero-surface: {{ section.settings.background_color | default: '#f7efe7' }}; --hero-accent: {{ section.settings.accent_color | default: '#b68c4b' }}; --hero-overlay-color: {{ section.settings.overlay_color | default: '#000000' }}; --hero-overlay-opacity: {{ section.settings.overlay_opacity | default: 0.18 }}; --hero-padding-top: {{ section.settings.padding_top | default: 72 }}px; --hero-padding-bottom: {{ section.settings.padding_bottom | default: 72 }}px; --hero-height: {{ section.settings.hero_height | default: 720 }}px;"
 >
   <div class="premium-fashion-hero__backdrop" aria-hidden="true"></div>
 
@@ -30,87 +31,62 @@
         {% if section.settings.primary_button_label != blank or section.settings.secondary_button_label != blank %}
           <div class="premium-fashion-hero__actions reveal reveal--item">
             {% if section.settings.primary_button_label != blank and section.settings.primary_button_link != blank %}
-              <a
-                class="premium-fashion-hero__button premium-fashion-hero__button--primary js-magnetic"
-                href="{{ section.settings.primary_button_link }}"
-              >
+              <a class="premium-fashion-hero__button premium-fashion-hero__button--primary js-magnetic" href="{{ section.settings.primary_button_link }}">
                 <span>{{ section.settings.primary_button_label }}</span>
               </a>
             {% endif %}
 
             {% if section.settings.secondary_button_label != blank and section.settings.secondary_button_link != blank %}
-              <a
-                class="premium-fashion-hero__button premium-fashion-hero__button--secondary"
-                href="{{ section.settings.secondary_button_link }}"
-              >
+              <a class="premium-fashion-hero__button premium-fashion-hero__button--secondary" href="{{ section.settings.secondary_button_link }}">
                 <span>{{ section.settings.secondary_button_label }}</span>
               </a>
             {% endif %}
           </div>
         {% endif %}
 
-        {% if section.blocks.size > 0 %}
-          <div class="premium-fashion-hero__highlights" role="list">
-            {% for block in section.blocks %}
-              {% if block.type == 'feature' %}
-                <article class="premium-fashion-hero__feature reveal reveal--item" {{ block.shopify_attributes }} role="listitem">
-                  <span class="premium-fashion-hero__feature-icon" aria-hidden="true">{{ block.settings.icon }}</span>
-                  <div>
-                    <h2 class="premium-fashion-hero__feature-title">{{ block.settings.title }}</h2>
-                    <p class="premium-fashion-hero__feature-text">{{ block.settings.text }}</p>
-                  </div>
-                </article>
-              {% endif %}
-            {% endfor %}
-          </div>
+        {% if section.settings.highlight_text != blank %}
+          <div class="premium-fashion-hero__floating-badge reveal reveal--item">{{ section.settings.highlight_text }}</div>
         {% endif %}
       </div>
 
       <div class="premium-fashion-hero__media reveal">
         <div class="premium-fashion-hero__media-frame">
-          {% if section.settings.hero_image != blank %}
-            <img
-              class="premium-fashion-hero__image"
-              src="{{ section.settings.hero_image | image_url: width: 1800 }}"
-              alt="{{ section.settings.hero_image.alt | escape }}"
-              loading="eager"
-              fetchpriority="high"
-              decoding="async"
-            >
+          {% if section.settings.desktop_image != blank or section.settings.mobile_image != blank %}
+            <picture>
+              {% if section.settings.mobile_image != blank %}
+                <source media="(max-width: 749px)" srcset="{{ section.settings.mobile_image | image_url: width: 1400 }}">
+              {% endif %}
+              {% if section.settings.desktop_image != blank %}
+                <img
+                  class="premium-fashion-hero__image"
+                  src="{{ section.settings.desktop_image | image_url: width: 2200 }}"
+                  alt="{{ section.settings.desktop_image.alt | escape }}"
+                  loading="eager"
+                  fetchpriority="high"
+                  decoding="async"
+                >
+              {% elsif section.settings.mobile_image != blank %}
+                <img
+                  class="premium-fashion-hero__image"
+                  src="{{ section.settings.mobile_image | image_url: width: 1400 }}"
+                  alt="{{ section.settings.mobile_image.alt | escape }}"
+                  loading="eager"
+                  fetchpriority="high"
+                  decoding="async"
+                >
+              {% endif %}
+            </picture>
           {% else %}
             <div class="premium-fashion-hero__media-placeholder" role="img" aria-label="Luxury fashion editorial preview"></div>
           {% endif %}
 
-          {% if section.settings.small_image != blank %}
-            <div class="premium-fashion-hero__overlay-card">
-              <img
-                class="premium-fashion-hero__overlay-image"
-                src="{{ section.settings.small_image | image_url: width: 900 }}"
-                alt="{{ section.settings.small_image.alt | escape }}"
-                loading="lazy"
-                decoding="async"
-              >
-              {% if section.settings.highlight_text != blank %}
-                <p class="premium-fashion-hero__overlay-text">{{ section.settings.highlight_text }}</p>
-              {% endif %}
-            </div>
-          {% endif %}
+          <div class="premium-fashion-hero__scroll-indicator" aria-hidden="true">
+            <span>Scroll</span>
+            <i></i>
+          </div>
         </div>
       </div>
     </div>
-
-    {% if section.blocks.size > 0 %}
-      <div class="premium-fashion-hero__stats" role="list">
-        {% for block in section.blocks %}
-          {% if block.type == 'stat' %}
-            <div class="premium-fashion-hero__stat reveal reveal--item" {{ block.shopify_attributes }} role="listitem">
-              <p class="premium-fashion-hero__stat-value">{{ block.settings.value }}</p>
-              <p class="premium-fashion-hero__stat-label">{{ block.settings.label }}</p>
-            </div>
-          {% endif %}
-        {% endfor %}
-      </div>
-    {% endif %}
   </div>
 </section>
 
@@ -118,49 +94,49 @@
 
 {% schema %}
 {
-  "name": "Premium Fashion Hero",
+  "name": "Ultra Premium Hero Banner",
   "tag": "section",
   "class": "section-premium-fashion-hero",
   "settings": [
     {
       "type": "text",
       "id": "eyebrow",
-      "label": "Eyebrow",
-      "default": "Luxury Essentials"
+      "label": "Small label",
+      "default": "Luxury essentials"
     },
     {
       "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "Crafted for the modern wardrobe"
+      "default": "The new standard of modern luxury"
     },
     {
       "type": "text",
       "id": "subheading",
       "label": "Subheading",
-      "default": "Elevated tailoring, sculptural silhouettes, and timeless details."
+      "default": "Refined tailoring, elevated comfort, and sculptural silhouettes designed to stand apart."
     },
     {
       "type": "richtext",
       "id": "description",
       "label": "Description",
-      "default": "<p>Discover a new era of fashion where quality meets distinction.</p>"
+      "default": "<p>Discover a fashion experience crafted for the modern wardrobe and the most discerning taste.</p>"
     },
     {
       "type": "image_picker",
-      "id": "hero_image",
-      "label": "Hero image"
+      "id": "desktop_image",
+      "label": "Desktop image"
     },
     {
       "type": "image_picker",
-      "id": "small_image",
-      "label": "Floating detail image"
+      "id": "mobile_image",
+      "label": "Mobile image"
     },
     {
       "type": "text",
       "id": "highlight_text",
-      "label": "Floating highlight text",
-      "default": "Limited release"
+      "label": "Floating badge text",
+      "default": "New arrival"
     },
     {
       "type": "text",
@@ -177,7 +153,7 @@
       "type": "text",
       "id": "secondary_button_label",
       "label": "Secondary button label",
-      "default": "Explore story"
+      "default": "Explore lookbook"
     },
     {
       "type": "url",
@@ -188,7 +164,7 @@
       "type": "color",
       "id": "background_color",
       "label": "Background color",
-      "default": "#0b0a09"
+      "default": "#f7efe7"
     },
     {
       "type": "color",
@@ -197,14 +173,63 @@
       "default": "#b68c4b"
     },
     {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay opacity",
+      "min": 0,
+      "max": 1,
+      "step": 0.01,
+      "default": 0.18
+    },
+    {
       "type": "select",
       "id": "content_alignment",
-      "label": "Content alignment",
+      "label": "Alignment",
       "default": "left",
       "options": [
         { "value": "left", "label": "Left" },
-        { "value": "center", "label": "Center" }
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
       ]
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "hero_height",
+      "label": "Image height",
+      "min": 320,
+      "max": 1200,
+      "step": 10,
+      "default": 720
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_animations",
+      "label": "Enable animations",
+      "default": true
     }
   ],
   "blocks": [
@@ -231,29 +256,11 @@
           "default": "Thoughtfully crafted with exceptional detail."
         }
       ]
-    },
-    {
-      "type": "stat",
-      "name": "Statistic",
-      "settings": [
-        {
-          "type": "text",
-          "id": "value",
-          "label": "Value",
-          "default": "01"
-        },
-        {
-          "type": "text",
-          "id": "label",
-          "label": "Label",
-          "default": "Season launch"
-        }
-      ]
     }
   ],
   "presets": [
     {
-      "name": "Premium Fashion Hero"
+      "name": "Ultra Premium Hero Banner"
     }
   ]
 }
