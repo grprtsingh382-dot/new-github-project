@@ -21,21 +21,21 @@
   z-index: 0;
 }
 
-.page-width {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 1.25rem;
-}
-
 .premium-fashion-hero__container {
   position: relative;
   z-index: 1;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 3vw, 2.5rem);
 }
 
 .premium-fashion-hero__grid {
   display: grid;
   gap: 2.25rem;
   align-items: center;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
 .premium-fashion-hero__content {
@@ -222,6 +222,9 @@
   display: grid;
   gap: 1rem;
   margin-top: 2rem;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .premium-fashion-hero__stat {
