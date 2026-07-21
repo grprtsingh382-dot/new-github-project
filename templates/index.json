@@ -1,125 +1,61 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
-    "premium_fashion_hero": {
-      "type": "premium-fashion-hero",
+    "image_banner": {
+      "type": "image-banner",
       "blocks": {
-        "feature_1": {
-          "type": "feature",
+        "heading": {
+          "type": "heading",
           "settings": {
-            "icon": "✦",
-            "title": "Signature finish",
-            "text": "Refined detailing that feels exceptional in every wear."
+            "heading": "Browse our latest products",
+            "heading_size": "h0"
           }
         },
-        "feature_2": {
-          "type": "feature",
+        "button": {
+          "type": "buttons",
           "settings": {
-            "icon": "◌",
-            "title": "Crafted comfort",
-            "text": "Designed for movement, polish, and all-day ease."
-          }
-        },
-        "stat_1": {
-          "type": "stat",
-          "settings": {
-            "value": "01",
-            "label": "Season launch"
+            "button_label_1": "Shop all",
+            "button_link_1": "shopify://collections/all",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
           }
         }
       },
       "block_order": [
-        "feature_1",
-        "feature_2",
-        "stat_1"
+        "heading",
+        "button"
       ],
       "settings": {
-        "eyebrow": "Curated luxury",
-        "heading": "The new standard of modern luxury",
-        "subheading": "Discover refined staples that move effortlessly from day to evening.",
-        "description": "<p>Elevated textures, precise tailoring, and timeless silhouettes created for a premium wardrobe.</p>",
-        "hero_image": "shopify://shop_images/man-poses-in-light-colored-overcoat.jpg",
-        "highlight_text": "New arrival",
-        "primary_button_label": "Shop now",
-        "primary_button_link": "shopify://collections/all",
-        "secondary_button_label": "View lookbook",
-        "secondary_button_link": "#",
-        "background_color": "#f7efe7",
-        "accent_color": "#b68c4b",
-        "content_alignment": "left"
-      }
-    },
-    "premium_featured_categories": {
-      "type": "featured-categories",
-      "blocks": {
-        "category_1": {
-          "type": "category",
-          "settings": {
-            "collection": "all"
-          }
-        },
-        "category_2": {
-          "type": "category",
-          "settings": {
-            "collection": "all"
-          }
-        },
-        "category_3": {
-          "type": "category",
-          "settings": {
-            "collection": "all"
-          }
-        },
-        "category_4": {
-          "type": "category",
-          "settings": {
-            "collection": "all"
-          }
-        }
-      },
-      "block_order": [
-        "category_1",
-        "category_2",
-        "category_3",
-        "category_4"
-      ],
-      "settings": {
-        "heading": "Featured Categories",
-        "subheading": "<p>Explore our most-loved collections in a polished, premium display.</p>",
-        "button_link": "shopify://collections/all",
-        "button_label": "Shop all",
-        "columns_desktop": 4,
-        "columns_mobile": "1",
-        "enable_mobile_slider": true,
-        "color_scheme": "scheme-1",
-        "padding_top": 48,
-        "padding_bottom": 48
+        "image_overlay_opacity": 40,
+        "image_height": "large",
+        "desktop_content_position": "bottom-center",
+        "show_text_box": false,
+        "image_behavior": "none",
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-3",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
       }
     },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
-        "collection": "all",
-        "products_to_show": 8,
         "title": "Featured products",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
         "description_style": "body",
+        "collection": "all",
+        "products_to_show": 8,
         "columns_desktop": 4,
-        "enable_desktop_slider": false,
+        "color_scheme": "scheme-1",
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "solid",
-        "color_scheme": "scheme-1",
+        "enable_desktop_slider": false,
+        "swipe_on_mobile": false,
         "image_ratio": "adapt",
         "image_shape": "default",
         "show_secondary_image": true,
@@ -127,15 +63,13 @@
         "show_rating": false,
         "quick_add": "none",
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
         "padding_top": 44,
         "padding_bottom": 36
       }
     }
   },
   "order": [
-    "premium_fashion_hero",
-    "premium_featured_categories",
+    "image_banner",
     "featured_collection"
   ]
 }
