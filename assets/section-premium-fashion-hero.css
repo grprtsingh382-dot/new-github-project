@@ -25,7 +25,7 @@
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 100%;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 0 clamp(1.25rem, 3vw, 2.5rem);
 }
@@ -34,7 +34,6 @@
   display: grid;
   gap: 2.25rem;
   align-items: center;
-  max-width: 1440px;
   margin: 0 auto;
 }
 
@@ -163,15 +162,17 @@
 
 .premium-fashion-hero__media {
   position: relative;
+  width: 100%;
 }
 
 .premium-fashion-hero__media-frame {
   position: relative;
   overflow: hidden;
+  width: 100%;
   border-radius: 2rem;
   border: 1px solid rgba(247, 239, 232, 0.16);
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
-  aspect-ratio: 4 / 5;
+  min-height: clamp(22rem, 56vw, 36rem);
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.02));
 }
 
@@ -181,6 +182,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 .premium-fashion-hero__media-placeholder {
@@ -271,7 +273,7 @@
 
 @media screen and (min-width: 750px) {
   .premium-fashion-hero__grid {
-    grid-template-columns: 1.05fr 0.95fr;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
     gap: 3rem;
   }
 
