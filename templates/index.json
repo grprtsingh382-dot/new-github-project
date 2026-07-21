@@ -64,6 +64,53 @@
         "enable_animations": true
       }
     },
+    "premium_featured_categories": {
+      "type": "featured-categories",
+      "blocks": {
+        "category_1": {
+          "type": "category",
+          "settings": {
+            "collection": "all"
+          }
+        },
+        "category_2": {
+          "type": "category",
+          "settings": {
+            "collection": "all"
+          }
+        },
+        "category_3": {
+          "type": "category",
+          "settings": {
+            "collection": "all"
+          }
+        },
+        "category_4": {
+          "type": "category",
+          "settings": {
+            "collection": "all"
+          }
+        }
+      },
+      "block_order": [
+        "category_1",
+        "category_2",
+        "category_3",
+        "category_4"
+      ],
+      "settings": {
+        "heading": "Featured Categories",
+        "subheading": "<p>Explore our most-loved collections in a polished, premium display.</p>",
+        "button_link": "shopify://collections/all",
+        "button_label": "Shop all",
+        "columns_desktop": 4,
+        "columns_mobile": "1",
+        "enable_mobile_slider": true,
+        "color_scheme": "scheme-1",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
@@ -95,6 +142,7 @@
   },
   "order": [
     "premium_fashion_hero",
+    "premium_featured_categories",
     "featured_collection"
   ]
 }
